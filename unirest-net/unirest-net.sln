@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unirest-net", "unirest-net\unirest-net.csproj", "{BB1927F2-4FC7-4520-8680-49C0245E05E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unirest-net-tests", "unirest-net-tests\unirest-net-tests.csproj", "{A1455397-D38D-4855-AEF6-634EE9DCD10E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB1927F2-4FC7-4520-8680-49C0245E05E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB1927F2-4FC7-4520-8680-49C0245E05E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB1927F2-4FC7-4520-8680-49C0245E05E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB1927F2-4FC7-4520-8680-49C0245E05E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1455397-D38D-4855-AEF6-634EE9DCD10E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1455397-D38D-4855-AEF6-634EE9DCD10E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1455397-D38D-4855-AEF6-634EE9DCD10E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1455397-D38D-4855-AEF6-634EE9DCD10E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
