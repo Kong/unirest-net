@@ -29,10 +29,10 @@ namespace unirest_net.http
         {
             var responseTask = RequestHelper(request);
             return Task<HttpResponse<T>>.Factory.StartNew(() =>
-                {
-                    Task.WaitAll(responseTask);
-                    return new HttpResponse<T>(responseTask.Result);
-                });
+            {
+                Task.WaitAll(responseTask);
+                return new HttpResponse<T>(responseTask.Result);
+            });
         }
 
         private static Task<HttpResponseMessage> RequestHelper(HttpRequest request)

@@ -18,7 +18,7 @@ namespace unirest_net.http
         public HttpResponse(System.Net.Http.HttpResponseMessage response)
         {
             Headers = new Dictionary<string, string>();
-            Code = (int) response.StatusCode;
+            Code = (int)response.StatusCode;
 
             if (response.Content != null)
             {

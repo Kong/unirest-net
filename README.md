@@ -40,10 +40,11 @@ Task<HttpResponse<MyClass>> myClassTask = Unirest.post("http://httpbin.org/post"
 Creating `multipart` requests with .NET is trivial, simply pass along a `Stream` Object as a field:
 
 ```C#
+byte[] data = File.ReadAllBytes(@"filePath");
 HttpResponse<MyClass> myClass = Unirest.post("http://httpbin.org/post")
   .header("accept", "application/json")
   .field("parameter", "value")
-  .field("file", new MemoryStream("/tmp/file"))
+  .field("files", data)
   .asJson<MyClass>();
 ```
 
