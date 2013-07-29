@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using unirest_net.http;
+using System.Net.Http.Headers;
 
 namespace unirest_net.request
 {
@@ -23,7 +24,7 @@ namespace unirest_net.request
 
         public Dictionary<String, String> Headers { get; protected set; }
 
-        public MultipartContent Body { get; private set; }
+        public MultipartFormDataContent Body { get; private set; }
 
         // Should add overload that takes URL object
         public HttpRequest(HttpMethod method, string url)
@@ -48,7 +49,8 @@ namespace unirest_net.request
             URL = locurl;
             HttpMethod = method;
             Headers = new Dictionary<string, string>();
-            Body = new MultipartContent();
+            Body = new MultipartFormDataContent();
+
         }
 
         public HttpRequest header(string name, string value)
@@ -81,8 +83,31 @@ namespace unirest_net.request
             {
                 throw new InvalidOperationException("Can't add fields to a request with an explicit body");
             }
+            
+            Body.Add(new StringContent(value), name);
 
-            Body.Add(new FormUrlEncodedContent(new Dictionary<string, string> { { name, value } }));
+            hasFields = true;
+            return this;
+        }
+
+        public HttpRequest field(string name, byte[] data)
+        {
+            if (HttpMethod == HttpMethod.Get)
+            {
+                throw new InvalidOperationException("Can't add body to Get request.");
+            }
+
+            if (hasExplicitBody)
+            {
+                throw new InvalidOperationException("Can't add fields to a request with an explicit body");
+            }
+            //    here you can specify boundary if you need---^
+            var imageContent = new ByteArrayContent(data);
+            imageContent.Headers.ContentType =
+                MediaTypeHeaderValue.Parse("image/jpeg");
+
+            Body.Add(imageContent, name, "image.jpg");
+
             hasFields = true;
             return this;
         }
@@ -139,7 +164,7 @@ namespace unirest_net.request
                 throw new InvalidOperationException("Can't add explicit body to request with fields");
             }
 
-            Body = new MultipartContent { new StringContent(body) };
+            Body = new MultipartFormDataContent { new StringContent(body) };
             hasExplicitBody = true;
             return this;
         }
@@ -157,7 +182,7 @@ namespace unirest_net.request
             }
 
             var serializer = new JavaScriptSerializer();
-            Body = new MultipartContent { new StringContent(serializer.Serialize(body)) };
+            Body = new MultipartFormDataContent { new StringContent(serializer.Serialize(body)) };
             hasExplicitBody = true;
             return this;
         }
