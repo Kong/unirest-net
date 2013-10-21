@@ -4,13 +4,10 @@ Unirest is a set of lightweight HTTP libraries available in multiple languages.
 
 This is a port of the Java library to .NET.
 
-Documentation
--------------------
-
-### Installing
+## Installing
 Is easy as pie. Kidding. It's as easy as downloading from [NuGet](https://nuget.org/packages/Unirest-Net/1.0.0-beta).
 
-### Creating Request
+## Creating Request
 So you're probably wondering how using Unirest makes creating requests in .NET easier, here is a basic POST request that will explain everything:
 
 ```C#
@@ -25,7 +22,7 @@ Requests are made when `as[Type]()` is invoked, possible types include `Json`, `
 
 `.headers(Dictionary<string, string> headers)` is also supported in replacement of multiple header methods.
 
-### Asynchronous Requests
+## Asynchronous Requests
 Sometimes, well most of the time, you want your application to be asynchronous and not block, Unirest supports this in .NET with the TPL pattern and async/await:
 
 ```C#
@@ -36,7 +33,7 @@ Task<HttpResponse<MyClass>> myClassTask = Unirest.post("http://httpbin.org/post"
   .asJsonAsync<MyClass>();
 ```
 
-### File Uploads
+## File Uploads
 Creating `multipart` requests with .NET is trivial, simply pass along a `Stream` Object as a field:
 
 ```C#
@@ -48,7 +45,7 @@ HttpResponse<MyClass> myClass = Unirest.post("http://httpbin.org/post")
   .asJson<MyClass>();
 ```
 
-### Custom Entity Body
+## Custom Entity Body
 
 ```C#
 HttpResponse<MyClass> myClass = Unirest.post("http://httpbin.org/post")
@@ -57,7 +54,7 @@ HttpResponse<MyClass> myClass = Unirest.post("http://httpbin.org/post")
   .asJson<MyClass>();
 ```
 
-### Request Reference
+# Request
 
 The .NET Unirest library follows the builder style conventions. You start building your request by creating a `HttpRequest` object using one of the following:
 
@@ -69,7 +66,7 @@ HttpRequest request = Unirest.patch(String url);
 HttpRequest request = Unirest.delete(String url);
 ```
 
-### Response Reference
+# Response
 
 Upon recieving a response Unirest returns the result in the form of an Object, this object should always have the same keys for each language regarding to the response details.
 
