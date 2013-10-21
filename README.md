@@ -1,4 +1,4 @@
-# Unirest for Net
+# Unirest for .Net
 
 Unirest is a set of lightweight HTTP libraries available in multiple languages.
 
