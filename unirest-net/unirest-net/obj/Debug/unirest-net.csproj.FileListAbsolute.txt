@@ -11,3 +11,15 @@ D:\Projects\OpenSource\Unirest-net\unirest-net\unirest-net\bin\Debug\System.Net.
 D:\Projects\OpenSource\Unirest-net\unirest-net\unirest-net\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\OpenSource\Unirest-net\unirest-net\unirest-net\obj\Debug\unirest-net.dll
 D:\Projects\OpenSource\Unirest-net\unirest-net\unirest-net\obj\Debug\unirest-net.pdb
+E:\Dev\unirest-net\unirest-net\unirest-net\bin\Debug\unirest-net.dll.config
+E:\Dev\unirest-net\unirest-net\unirest-net\bin\Debug\unirest-net.dll
+E:\Dev\unirest-net\unirest-net\unirest-net\bin\Debug\unirest-net.pdb
+E:\Dev\unirest-net\unirest-net\unirest-net\bin\Debug\System.Net.Http.dll
+E:\Dev\unirest-net\unirest-net\unirest-net\bin\Debug\System.Net.Http.Primitives.dll
+E:\Dev\unirest-net\unirest-net\unirest-net\bin\Debug\System.Net.Http.WebRequest.dll
+E:\Dev\unirest-net\unirest-net\unirest-net\bin\Debug\System.Net.Http.xml
+E:\Dev\unirest-net\unirest-net\unirest-net\bin\Debug\System.Net.Http.Primitives.xml
+E:\Dev\unirest-net\unirest-net\unirest-net\bin\Debug\System.Net.Http.WebRequest.xml
+E:\Dev\unirest-net\unirest-net\unirest-net\obj\Debug\unirest-net.csprojResolveAssemblyReference.cache
+E:\Dev\unirest-net\unirest-net\unirest-net\obj\Debug\unirest-net.dll
+E:\Dev\unirest-net\unirest-net\unirest-net\obj\Debug\unirest-net.pdb

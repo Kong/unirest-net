@@ -488,6 +488,25 @@ namespace unicorn_net_tests.request
         }
 
         [Test]
+        public static void HttpRequestWithBody_Should_Add_JSON_Content_Type()
+        {
+            var Post = new HttpRequest(HttpMethod.Post, "http://localhost");
+            var Delete = new HttpRequest(HttpMethod.Delete, "http://localhost");
+            var Patch = new HttpRequest(new HttpMethod("PATCH"), "http://localhost");
+            var Put = new HttpRequest(HttpMethod.Put, "http://localhost");
+
+            Post.body(new List<int> { 1, 2, 3 });
+            Delete.body(new List<int> { 1, 2, 3 });
+            Patch.body(new List<int> { 1, 2, 3 });
+            Put.body(new List<int> { 1, 2, 3 });
+
+            Post.Headers.Any(h => h.Key == "Content-Type" && h.Value == "application/json").Should().BeTrue();
+            Delete.Headers.Any(h => h.Key == "Content-Type" && h.Value == "application/json").Should().BeTrue();
+            Patch.Headers.Any(h => h.Key == "Content-Type" && h.Value == "application/json").Should().BeTrue();
+            Put.Headers.Any(h => h.Key == "Content-Type" && h.Value == "application/json").Should().BeTrue();
+        }
+
+        [Test]
         public static void Http_Request_Shouldnt_Add_Fields_To_Get()
         {
             var Get = new HttpRequest(HttpMethod.Get, "http://localhost");

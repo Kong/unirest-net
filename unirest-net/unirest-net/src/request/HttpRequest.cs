@@ -184,6 +184,7 @@ namespace unirest_net.request
             var serializer = new JavaScriptSerializer();
             Body = new MultipartFormDataContent { new StringContent(serializer.Serialize(body)) };
             hasExplicitBody = true;
+            header("Content-Type", "application/json");
             return this;
         }
 
