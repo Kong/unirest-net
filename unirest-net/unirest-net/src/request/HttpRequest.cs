@@ -6,9 +6,9 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using unirest_net.http;
 using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 namespace unirest_net.request
 {
@@ -181,8 +181,7 @@ namespace unirest_net.request
                 throw new InvalidOperationException("Can't add explicit body to request with fields");
             }
 
-            var serializer = new JavaScriptSerializer();
-            Body = new MultipartFormDataContent { new StringContent(serializer.Serialize(body)) };
+            Body = new MultipartFormDataContent { new StringContent(JsonConvert.SerializeObject(body)) };
             hasExplicitBody = true;
             return this;
         }

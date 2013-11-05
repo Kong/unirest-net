@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 
 namespace unirest_net.http
 {
@@ -38,10 +38,9 @@ namespace unirest_net.http
                 }
                 else
                 {
-                    var serializer = new JavaScriptSerializer();
                     var stringTask = response.Content.ReadAsStringAsync();
                     Task.WaitAll(stringTask);
-                    Body = serializer.Deserialize<T>(stringTask.Result);
+                    Body = JsonConvert.DeserializeObject<T>(stringTask.Result);
                 }
             }
 
