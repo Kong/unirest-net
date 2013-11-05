@@ -35,7 +35,7 @@ namespace unirest_net.request
             {
                 if (
                     !(locurl.IsAbsoluteUri &&
-                      (locurl.Scheme == Uri.UriSchemeHttp || locurl.Scheme == Uri.UriSchemeHttps)) ||
+                      (locurl.Scheme == "http" || locurl.Scheme == "https")) ||
                     !locurl.IsAbsoluteUri)
                 {
                     throw new ArgumentException("The url passed to the HttpMethod constructor is not a valid HTTP/S URL");
