@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-
+﻿using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using unirest_net;
-using unirest_net.http;
+
 using unirest_net.request;
 
 namespace unirest_net.http
