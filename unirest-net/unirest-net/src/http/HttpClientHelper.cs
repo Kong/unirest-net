@@ -8,7 +8,7 @@ namespace unirest_net.http
 {
     public class HttpClientHelper
     {
-        private const string USER_AGENT = "unirest-java/1.0";
+        private const string USER_AGENT = "unirest-net/1.0";
 
         public static HttpResponse<T> Request<T>(HttpRequest request)
         {
