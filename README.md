@@ -5,7 +5,7 @@ Unirest is a set of lightweight HTTP libraries available in multiple languages.
 This is a port of the Java library to .NET.
 
 ## Installing
-Is easy as pie. Kidding. It's as easy as downloading from [NuGet](https://nuget.org/packages/Unirest-Net/1.0.0-beta).
+We're currently updating Nuget to point to the latest package.  In the meantime, please download this entire unirest-net library and reference it in your project.
 
 ## Creating Request
 So you're probably wondering how using Unirest makes creating requests in .NET easier, here is a basic POST request that will explain everything:
