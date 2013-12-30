@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-
+using System.Net;
 using unirest_net.http;
 
 namespace unirest_net.request
@@ -16,6 +16,8 @@ namespace unirest_net.request
         private bool hasFields;
 
         private bool hasExplicitBody;
+
+        public NetworkCredential NetworkCredentials { get; protected set; }
 
         public Uri URL { get; protected set; }
 
@@ -108,6 +110,17 @@ namespace unirest_net.request
             Body.Add(imageContent, name, "image.jpg");
 
             hasFields = true;
+            return this;
+        }
+
+        public HttpRequest basicAuth(string userName, string passWord)
+        {
+            if (this.NetworkCredentials != null)
+            {
+                throw new InvalidOperationException("Basic authentication credentials are already set.");
+            }
+
+            this.NetworkCredentials = new NetworkCredential(userName, passWord);
             return this;
         }
 

@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Text;
+using System;
 
 using unirest_net.request;
 
@@ -38,6 +40,19 @@ namespace unirest_net.http
 
             var client = new HttpClient();
             var msg = new HttpRequestMessage(request.HttpMethod, request.URL);
+
+            if (request.NetworkCredentials != null)
+            {
+                string authToken = Convert.ToBase64String(
+                                    UTF8Encoding.UTF8.GetBytes(string.Format("{0}:{1}",
+                                        request.NetworkCredentials.UserName,
+                                        request.NetworkCredentials.Password))
+                                    );
+
+                string authValue = string.Format("Basic {0}", authToken);
+
+                request.Headers.Add("Authorization", authValue);
+            }
 
             foreach (var header in request.Headers)
             {
