@@ -74,3 +74,15 @@ Upon recieving a response Unirest returns the result in the form of an Object, t
 - `.Headers` - HTTP Response Headers
 - `.Body` - Parsed response body where applicable, for example JSON responses are parsed to Objects / Associative Arrays.
 - `.Raw` - Un-parsed response body
+
+# Basic Authentication
+
+The .NET Unirest library has built-in support for basic authentication. You can append your credentials with your request as follows.
+
+```C#
+HttpResponse<MyClass> myClass = Unirest.post("http://httpbin.org/post")
+  .header("accept", "application/json")
+  .field("parameter", "value")
+  .basicAuth("username", "password")
+  .asJson<MyClass>();
+```
