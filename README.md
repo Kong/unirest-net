@@ -86,3 +86,15 @@ HttpResponse<MyClass> myClass = Unirest.post("http://httpbin.org/post")
   .basicAuth("username", "password")
   .asJson<MyClass>();
 ```
+
+# Advanced Authentication using Filter
+
+This library supports message filter for outgoing http messages. This functionality can be used for manipulating outgoing request. A usecase for this feature is to use external authentication handlers for advanced authentication process such as the various flows of oAuth. You can set an authentication filter that is invoked before making a request and thus any additional credentials or headers can be appended. See uniauth on github (https://github.com/zeeshanejaz/uniauth-net) for a compatible authentication filter.
+
+```C#
+HttpResponse<MyClass> myClass = Unirest.post("http://httpbin.org/post")
+  .header("accept", "application/json")
+  .field("parameter", "value")
+  .filter(<delegate to message filter>)
+  .asJson<MyClass>();
+```

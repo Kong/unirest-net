@@ -38,9 +38,11 @@ namespace unirest_net.http
                 request.Headers.Add("user-agent", USER_AGENT);
             }
 
+            //create http client and request
             var client = new HttpClient();
             var msg = new HttpRequestMessage(request.HttpMethod, request.URL);
 
+            //process basic authentication
             if (request.NetworkCredentials != null)
             {
                 string authToken = Convert.ToBase64String(
@@ -54,14 +56,22 @@ namespace unirest_net.http
                 request.Headers.Add("Authorization", authValue);
             }
 
+            //append all headers
             foreach (var header in request.Headers)
             {
-                msg.Headers.Add(header.Key, header.Value);
+                msg.Headers.TryAddWithoutValidation(header.Key, header.Value);
             }
 
+            //append body content
             if (request.Body.Any())
             {
                 msg.Content = request.Body;
+            }
+
+            //process message with the filter before sending
+            if (request.Filter != null)
+            {
+                request.Filter(msg);
             }
 
             return client.SendAsync(msg);

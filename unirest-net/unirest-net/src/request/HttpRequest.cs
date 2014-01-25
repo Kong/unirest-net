@@ -19,6 +19,8 @@ namespace unirest_net.request
 
         public NetworkCredential NetworkCredentials { get; protected set; }
 
+        public Func<HttpRequestMessage, bool> Filter { get; protected set; }
+
         public Uri URL { get; protected set; }
 
         public HttpMethod HttpMethod { get; protected set; }
@@ -59,7 +61,7 @@ namespace unirest_net.request
             Headers.Add(name, value);
             return this;
         }
-
+        
         public HttpRequest headers(Dictionary<string, string> headers)
         {
             if (headers != null)
@@ -121,6 +123,23 @@ namespace unirest_net.request
             }
 
             this.NetworkCredentials = new NetworkCredential(userName, passWord);
+            return this;
+        }
+
+        /// <summary>
+        /// Set a delegate to a message filter. This is particularly useful for using external
+        /// authentication libraries such as uniauth (https://github.com/zeeshanejaz/uniauth-net)
+        /// </summary>
+        /// <param name="handler">Filter accepting HttpRequestMessage and returning bool</param>
+        /// <returns>updated reference</returns>
+        public HttpRequest filter(Func<HttpRequestMessage, bool> filter)
+        {            
+            if (this.Filter != null)
+            {
+                throw new InvalidOperationException("Processing filter is already set.");
+            }
+
+            this.Filter = filter;
             return this;
         }
 
