@@ -95,6 +95,6 @@ This library supports message filter for outgoing http messages. This functional
 HttpResponse<MyClass> myClass = Unirest.post("http://httpbin.org/post")
   .header("accept", "application/json")
   .field("parameter", "value")
-  .filter(<delegate to message filter>)
+  .filter(Func<HttpRequestMessage, bool> filter)
   .asJson<MyClass>();
 ```
