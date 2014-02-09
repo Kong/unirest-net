@@ -162,6 +162,9 @@ namespace unirest_net.request
 
         public HttpRequest fields(Dictionary<string, object> parameters)
         {
+            if (parameters == null)
+                return this;
+
             if (HttpMethod == HttpMethod.Get)
             {
                 throw new InvalidOperationException("Can't add body to Get request.");
