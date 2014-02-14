@@ -82,14 +82,14 @@
     <Compile Include="src\request\HttpRequestTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\unirest-net %28Portable%29\unirest-net %28Portable%29.csproj">
-      <Project>{BB1927F2-4FC7-4520-8680-49C0245E05E0}</Project>
-      <Name>unirest-net %28Portable%29</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\unirest-net %28NET40%29\unirest-net %28NET40%29.csproj">
+      <Project>{3049fb55-b42d-47ec-852f-b26b14bb6a50}</Project>
+      <Name>unirest-net %28NET40%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
