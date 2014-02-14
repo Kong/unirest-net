@@ -32,11 +32,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\unirest-net %28NET40%29\src\http\HttpClientHelper.cs">
+      <Link>src\http\HttpClientHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\unirest-net %28NET40%29\src\http\HttpResponse.cs">
+      <Link>src\http\HttpResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\unirest-net %28NET40%29\src\http\Unirest.cs">
+      <Link>src\http\Unirest.cs</Link>
+    </Compile>
+    <Compile Include="..\unirest-net %28NET40%29\src\request\HttpRequest.cs">
+      <Link>src\request\HttpRequest.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\http\HttpClientHelper.cs" />
-    <Compile Include="src\http\HttpResponse.cs" />
-    <Compile Include="src\http\Unirest.cs" />
-    <Compile Include="src\request\HttpRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
