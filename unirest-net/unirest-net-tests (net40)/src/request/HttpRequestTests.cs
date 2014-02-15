@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using unirest_net.request;
 
-namespace unicorn_net_tests.request
+namespace unirest_net_tests.request
 {
     [TestClass]
     public class HttpRequestTests

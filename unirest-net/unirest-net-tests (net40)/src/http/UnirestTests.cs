@@ -1,14 +1,15 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net.Http;
+using unirest_net.http;
 
-namespace unirest_net.http
+namespace unirest_net_tests.http
 {
     [TestClass]
-    public class UnicornTest
+    public class UnirestTest
     {
         [TestMethod]
-        public void Unicorn_Should_Return_Correct_Verb()
+        public void Unirest_Should_Return_Correct_Verb()
         {
             Unirest.get("http://localhost").HttpMethod.Should().Be(HttpMethod.Get);
             Unirest.post("http://localhost").HttpMethod.Should().Be(HttpMethod.Post);
@@ -18,7 +19,7 @@ namespace unirest_net.http
         }
 
         [TestMethod]
-        public void Unicorn_Should_Return_Correct_URL()
+        public void Unirest_Should_Return_Correct_URL()
         {
             Unirest.get("http://localhost").URL.OriginalString.Should().Be("http://localhost");
             Unirest.post("http://localhost").URL.OriginalString.Should().Be("http://localhost");

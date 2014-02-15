@@ -11,28 +11,28 @@ namespace unirest_net_tests.http
     public class HttpClientHelperTests
     {
         [TestMethod]
-        public void HttpClientHelper_Should_Reqeust()
+        public void HttpClientHelper_Should_Request()
         {
             Action request = () => HttpClientHelper.Request<string>(new HttpRequest(HttpMethod.Get, "http://www.google.com"));
             request.ShouldNotThrow();
         }
 
         [TestMethod]
-        public void HttpClientHelper_Should_Reqeust_Async()
+        public void HttpClientHelper_Should_Request_Async()
         {
             Action request = () => HttpClientHelper.RequestAsync<string>(new HttpRequest(HttpMethod.Get, "http://www.google.com"));
             request.ShouldNotThrow();
         }
 
         [TestMethod]
-        public void HttpClientHelper_Should_Reqeust_With_Fields()
+        public void HttpClientHelper_Should_Request_With_Fields()
         {
             Action request = () => HttpClientHelper.Request<string>(new HttpRequest(HttpMethod.Post, "http://www.google.com").field("test","value"));
             request.ShouldNotThrow();
         }
 
         [TestMethod]
-        public void HttpClientHelper_Should_Reqeust_Async_With_Fields()
+        public void HttpClientHelper_Should_Request_Async_With_Fields()
         {
             Action request = () => HttpClientHelper.RequestAsync<string>(new HttpRequest(HttpMethod.Post, "http://www.google.com").field("test", "value"));
             request.ShouldNotThrow();
