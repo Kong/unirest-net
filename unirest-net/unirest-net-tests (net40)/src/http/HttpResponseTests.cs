@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-
-using NUnit;
-using NUnit.Framework;
-using FluentAssertions;
-
 using unirest_net.http;
-using unirest_net.request;
 
 namespace unirest_net_tests.http
 {
-    [TestFixture]
-    class HttpResponseTests
+    [TestClass]
+    public class HttpResponseTests
     {
-        [Test]
-        public static void HttpResponse_Should_Construct()
+        [TestMethod]
+        public void HttpResponse_Should_Construct()
         {
             Action stringResponse = () => new HttpResponse<string>(new HttpResponseMessage { Content = new StringContent("test") });
             Action streamResponse = () => new HttpResponse<Stream>(new HttpResponseMessage { Content = new StreamContent(new MemoryStream())});
