@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unirest-net (portable)", "u
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unirest-net-tests (net40)", "unirest-net-tests (net40)\unirest-net-tests (net40).csproj", "{A1455397-D38D-4855-AEF6-634EE9DCD10E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{47237C67-9574-416E-984A-BF78643CCD6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{856C75AC-4FBB-4C84-87FA-B3F38C7EC6D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BB1927F2-4FC7-4520-8680-49C0245E05E0} = {47237C67-9574-416E-984A-BF78643CCD6F}
+		{B3CAC40B-7582-4058-8F65-197301EE6807} = {47237C67-9574-416E-984A-BF78643CCD6F}
+		{A1455397-D38D-4855-AEF6-634EE9DCD10E} = {856C75AC-4FBB-4C84-87FA-B3F38C7EC6D9}
 	EndGlobalSection
 EndGlobal
