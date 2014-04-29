@@ -175,7 +175,7 @@ namespace unirest_net.request
                 throw new InvalidOperationException("Can't add fields to a request with an explicit body");
             }
 
-            Body.Add(new FormUrlEncodedContent(parameters.Where(kv => kv.Value is String).Select(kv => new KeyValuePair<string, string>(kv.Key, kv.Value as String))));
+            Body.Add(new FormUrlEncodedContent(parameters.Where(kv => isPrimitiveType(kv.Value)).Select(kv => new KeyValuePair<string, string>(kv.Key, kv.Value.ToString()))));
 
             foreach (var stream in parameters.Where(kv => kv.Value is Stream).Select(kv => kv.Value))
             {
@@ -184,6 +184,14 @@ namespace unirest_net.request
 
             hasFields = true;
             return this;
+        }
+
+        private bool isPrimitiveType(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            return obj.GetType().IsPrimitive;
         }
 
         public HttpRequest body(string body)
