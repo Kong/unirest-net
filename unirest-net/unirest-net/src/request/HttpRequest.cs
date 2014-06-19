@@ -56,29 +56,29 @@ namespace unirest_net.request
 
         }
 
-        public HttpRequest header(string name, string value)
+        public HttpRequest header(string name, object value)
         {
             if (value != null)
-                Headers.Add(name, value);
+                Headers.Add(name, value.ToString());
 
             return this;
         }
         
-        public HttpRequest headers(Dictionary<string, string> headers)
+        public HttpRequest headers(Dictionary<string, object> headers)
         {
             if (headers != null)
             {
                 foreach (var header in headers)
                 {
                     if(header.Value != null)
-                        Headers.Add(header.Key, header.Value);
+                        Headers.Add(header.Key, header.Value.ToString());
                 }
             }
 
             return this;
         }
 
-        public HttpRequest field(string name, string value)
+        public HttpRequest field(string name, object value)
         {
             if (HttpMethod == HttpMethod.Get)
             {
@@ -93,7 +93,7 @@ namespace unirest_net.request
             if (value == null)
                 return this;
 
-            Body.Add(new StringContent(value), name);
+            Body.Add(new StringContent(value.ToString()), name);
 
             hasFields = true;           
 

@@ -146,11 +146,11 @@ namespace unicorn_net_tests.request
             var Patch = new HttpRequest(new HttpMethod("PATCH"), "http://localhost");
             var Put = new HttpRequest(HttpMethod.Put, "http://localhost");
 
-            Get.headers(new Dictionary<string, string> { { "User-Agent", "unirest-net/1.0" } });
-            Post.headers(new Dictionary<string, string> { { "User-Agent", "unirest-net/1.0" } });
-            Delete.headers(new Dictionary<string, string> { { "User-Agent", "unirest-net/1.0" } });
-            Patch.headers(new Dictionary<string, string> { { "User-Agent", "unirest-net/1.0" } });
-            Put.headers(new Dictionary<string, string> { { "User-Agent", "unirest-net/1.0" } });
+            Get.headers(new Dictionary<string, object> { { "User-Agent", "unirest-net/1.0" } });
+            Post.headers(new Dictionary<string, object> { { "User-Agent", "unirest-net/1.0" } });
+            Delete.headers(new Dictionary<string, object> { { "User-Agent", "unirest-net/1.0" } });
+            Patch.headers(new Dictionary<string, object> { { "User-Agent", "unirest-net/1.0" } });
+            Put.headers(new Dictionary<string, object> { { "User-Agent", "unirest-net/1.0" } });
 
             Get.Headers.Should().Contain("User-Agent", "unirest-net/1.0");
             Post.Headers.Should().Contain("User-Agent", "unirest-net/1.0");
@@ -168,11 +168,11 @@ namespace unicorn_net_tests.request
             var Patch = new HttpRequest(new HttpMethod("PATCH"), "http://www.google.com");
             var Put = new HttpRequest(HttpMethod.Put, "http://www.google.com");
 
-            Get.asString().Body.Should().NotBeBlank();
-            Post.asString().Body.Should().NotBeBlank();
-            Delete.asString().Body.Should().NotBeBlank();
-            Patch.asString().Body.Should().NotBeBlank();
-            Put.asString().Body.Should().NotBeBlank();
+            Get.asString().Body.Should().NotBeNullOrWhiteSpace();
+            Post.asString().Body.Should().NotBeNullOrWhiteSpace();
+            Delete.asString().Body.Should().NotBeNullOrWhiteSpace();
+            Patch.asString().Body.Should().NotBeNullOrWhiteSpace();
+            Put.asString().Body.Should().NotBeNullOrWhiteSpace();
         }
 
         [Test]
@@ -200,11 +200,11 @@ namespace unicorn_net_tests.request
             var Patch = new HttpRequest(new HttpMethod("PATCH"), "http://www.google.com");
             var Put = new HttpRequest(HttpMethod.Put, "http://www.google.com");
 
-            Get.asJson<String>().Body.Should().NotBeBlank();
-            Post.asJson<String>().Body.Should().NotBeBlank();
-            Delete.asJson<String>().Body.Should().NotBeBlank();
-            Patch.asJson<String>().Body.Should().NotBeBlank();
-            Put.asJson<String>().Body.Should().NotBeBlank();
+            Get.asJson<String>().Body.Should().NotBeNullOrWhiteSpace();
+            Post.asJson<String>().Body.Should().NotBeNullOrWhiteSpace();
+            Delete.asJson<String>().Body.Should().NotBeNullOrWhiteSpace();
+            Patch.asJson<String>().Body.Should().NotBeNullOrWhiteSpace();
+            Put.asJson<String>().Body.Should().NotBeNullOrWhiteSpace();
         }
 
         [Test]
@@ -218,11 +218,11 @@ namespace unicorn_net_tests.request
 
             Task.WaitAll(Get, Post, Delete, Patch, Put);
 
-            Get.Result.Body.Should().NotBeBlank();
-            Post.Result.Body.Should().NotBeBlank();
-            Delete.Result.Body.Should().NotBeBlank();
-            Patch.Result.Body.Should().NotBeBlank();
-            Put.Result.Body.Should().NotBeBlank();
+            Get.Result.Body.Should().NotBeNullOrWhiteSpace();
+            Post.Result.Body.Should().NotBeNullOrWhiteSpace();
+            Delete.Result.Body.Should().NotBeNullOrWhiteSpace();
+            Patch.Result.Body.Should().NotBeNullOrWhiteSpace();
+            Put.Result.Body.Should().NotBeNullOrWhiteSpace();
         }
 
         [Test]
@@ -254,11 +254,11 @@ namespace unicorn_net_tests.request
 
             Task.WaitAll(Get, Post, Delete, Patch, Put);
 
-            Get.Result.Body.Should().NotBeBlank();
-            Post.Result.Body.Should().NotBeBlank();
-            Delete.Result.Body.Should().NotBeBlank();
-            Patch.Result.Body.Should().NotBeBlank();
-            Put.Result.Body.Should().NotBeBlank();
+            Get.Result.Body.Should().NotBeNullOrWhiteSpace();
+            Post.Result.Body.Should().NotBeNullOrWhiteSpace();
+            Delete.Result.Body.Should().NotBeNullOrWhiteSpace();
+            Patch.Result.Body.Should().NotBeNullOrWhiteSpace();
+            Put.Result.Body.Should().NotBeNullOrWhiteSpace();
         }
 
         [Test]
@@ -372,10 +372,10 @@ namespace unicorn_net_tests.request
             var Patch = new HttpRequest(new HttpMethod("PATCH"), "http://localhost");
             var Put = new HttpRequest(HttpMethod.Put, "http://localhost");
 
-            Post.headers(new Dictionary<string, string> { { "User-Agent", "unirest-net/1.0" } });
-            Delete.headers(new Dictionary<string, string> { { "User-Agent", "unirest-net/1.0" } });
-            Patch.headers(new Dictionary<string, string> { { "User-Agent", "unirest-net/1.0" } });
-            Put.headers(new Dictionary<string, string> { { "User-Agent", "unirest-net/1.0" } });
+            Post.headers(new Dictionary<string, object> { { "User-Agent", "unirest-net/1.0" } });
+            Delete.headers(new Dictionary<string, object> { { "User-Agent", "unirest-net/1.0" } });
+            Patch.headers(new Dictionary<string, object> { { "User-Agent", "unirest-net/1.0" } });
+            Put.headers(new Dictionary<string, object> { { "User-Agent", "unirest-net/1.0" } });
 
             Post.Headers.Should().Contain("User-Agent", "unirest-net/1.0");
             Delete.Headers.Should().Contain("User-Agent", "unirest-net/1.0");
