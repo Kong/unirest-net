@@ -58,7 +58,9 @@ namespace unirest_net.request
 
         public HttpRequest header(string name, string value)
         {
-            Headers.Add(name, value);
+            if (value != null)
+                Headers.Add(name, value);
+
             return this;
         }
         
@@ -68,7 +70,8 @@ namespace unirest_net.request
             {
                 foreach (var header in headers)
                 {
-                    Headers.Add(header.Key, header.Value);
+                    if(header.Value != null)
+                        Headers.Add(header.Key, header.Value);
                 }
             }
 
@@ -86,10 +89,14 @@ namespace unirest_net.request
             {
                 throw new InvalidOperationException("Can't add fields to a request with an explicit body");
             }
-            
+
+            if (value == null)
+                return this;
+
             Body.Add(new StringContent(value), name);
 
-            hasFields = true;
+            hasFields = true;           
+
             return this;
         }
 
@@ -104,6 +111,10 @@ namespace unirest_net.request
             {
                 throw new InvalidOperationException("Can't add fields to a request with an explicit body");
             }
+
+            if (data == null)
+                return this;
+
             //    here you can specify boundary if you need---^
             var imageContent = new ByteArrayContent(data);
             imageContent.Headers.ContentType =
@@ -155,6 +166,9 @@ namespace unirest_net.request
                 throw new InvalidOperationException("Can't add fields to a request with an explicit body");
             }
 
+            if (value == null)
+                return this;
+
             Body.Add(new StreamContent(value));
             hasFields = true;
             return this;
@@ -179,6 +193,9 @@ namespace unirest_net.request
 
             foreach (var stream in parameters.Where(kv => kv.Value is Stream).Select(kv => kv.Value))
             {
+                if (stream == null)
+                    continue;
+
                 Body.Add(new StreamContent(stream as Stream));
             }
 
@@ -206,6 +223,9 @@ namespace unirest_net.request
                 throw new InvalidOperationException("Can't add explicit body to request with fields");
             }
 
+            if (body == null)
+                return this;
+
             Body = new MultipartFormDataContent { new StringContent(body) };
             hasExplicitBody = true;
             return this;
@@ -222,6 +242,9 @@ namespace unirest_net.request
             {
                 throw new InvalidOperationException("Can't add explicit body to request with fields");
             }
+
+            if (body == null)
+                return this;
 
             Body = new MultipartFormDataContent { new StringContent(JsonConvert.SerializeObject(body)) };
             hasExplicitBody = true;
