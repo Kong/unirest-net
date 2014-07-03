@@ -80,9 +80,9 @@ namespace unirest_net.request
 
         public HttpRequest field(string name, object value)
         {
-            if (HttpMethod == HttpMethod.Get)
+            if ((HttpMethod == HttpMethod.Get) || (HttpMethod == HttpMethod.Head) || (HttpMethod == HttpMethod.Trace))
             {
-                throw new InvalidOperationException("Can't add body to Get request.");
+                throw new InvalidOperationException(string.Format("Can't add body to {0} request.", HttpMethod));
             }
 
             if (hasExplicitBody)
@@ -102,9 +102,9 @@ namespace unirest_net.request
 
         public HttpRequest field(string name, byte[] data)
         {
-            if (HttpMethod == HttpMethod.Get)
+            if ((HttpMethod == HttpMethod.Get) || (HttpMethod == HttpMethod.Head) || (HttpMethod == HttpMethod.Trace))
             {
-                throw new InvalidOperationException("Can't add body to Get request.");
+                throw new InvalidOperationException(string.Format("Can't add body to {0} request.", HttpMethod));
             }
 
             if (hasExplicitBody)
@@ -156,9 +156,9 @@ namespace unirest_net.request
 
         public HttpRequest field(Stream value)
         {
-            if (HttpMethod == HttpMethod.Get)
+            if ((HttpMethod == HttpMethod.Get) || (HttpMethod == HttpMethod.Head) || (HttpMethod == HttpMethod.Trace))
             {
-                throw new InvalidOperationException("Can't add body to Get request.");
+                throw new InvalidOperationException(string.Format("Can't add body to {0} request.", HttpMethod));
             }
 
             if (hasExplicitBody)
@@ -179,9 +179,9 @@ namespace unirest_net.request
             if (parameters == null)
                 return this;
 
-            if (HttpMethod == HttpMethod.Get)
+            if ((HttpMethod == HttpMethod.Get) || (HttpMethod == HttpMethod.Head) || (HttpMethod == HttpMethod.Trace))
             {
-                throw new InvalidOperationException("Can't add body to Get request.");
+                throw new InvalidOperationException(string.Format("Can't add body to {0} request.", HttpMethod));
             }
 
             if (hasExplicitBody)
@@ -213,9 +213,9 @@ namespace unirest_net.request
 
         public HttpRequest body(string body)
         {
-            if (HttpMethod == HttpMethod.Get)
+            if ((HttpMethod == HttpMethod.Get) || (HttpMethod == HttpMethod.Head) || (HttpMethod == HttpMethod.Trace))
             {
-                throw new InvalidOperationException("Can't add body to Get request.");
+                throw new InvalidOperationException(string.Format("Can't add body to {0} request.", HttpMethod));
             }
 
             if (hasFields)
@@ -233,9 +233,9 @@ namespace unirest_net.request
 
         public HttpRequest body<T>(T body)
         {
-            if (HttpMethod == HttpMethod.Get)
+            if ((HttpMethod == HttpMethod.Get) || (HttpMethod == HttpMethod.Head) || (HttpMethod == HttpMethod.Trace))
             {
-                throw new InvalidOperationException("Can't add body to Get request.");
+                throw new InvalidOperationException(string.Format("Can't add body to {0} request.", HttpMethod));
             }
 
             if (hasFields)
@@ -246,7 +246,21 @@ namespace unirest_net.request
             if (body == null)
                 return this;
 
-            Body = new MultipartFormDataContent { new StringContent(JsonConvert.SerializeObject(body)) };
+            if (body is Stream)
+            {
+                Stream inputStream = (body as Stream);
+                if (!inputStream.CanRead)
+                    throw new ArgumentException("Excepting a readable stream");
+
+                StreamReader reader = new StreamReader(inputStream);
+                string fileContent = reader.ReadToEnd();
+                Body = new MultipartFormDataContent { new StringContent(fileContent) };
+            }
+            else
+            {
+                Body = new MultipartFormDataContent { new StringContent(JsonConvert.SerializeObject(body)) };
+            }
+
             hasExplicitBody = true;
             return this;
         }
