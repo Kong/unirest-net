@@ -31,5 +31,20 @@ namespace unirest_net.http
         {
             return new HttpRequest(HttpMethod.Put, url);
         }
+
+        public static HttpRequest options(string url)
+        {
+            return new HttpRequest(HttpMethod.Options, url);
+        }
+
+        public static HttpRequest head(string url)
+        {
+            return new HttpRequest(HttpMethod.Head, url);
+        }
+
+        public static HttpRequest trace(string url)
+        {
+            return new HttpRequest(HttpMethod.Trace, url);
+        }
     }
 }

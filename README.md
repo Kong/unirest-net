@@ -5,7 +5,11 @@ Unirest is a set of lightweight HTTP libraries available in multiple languages.
 This is a port of the Java library to .NET.
 
 ## Installing
-We're currently updating Nuget to point to the latest package.  In the meantime, please download this entire unirest-net library and reference it in your project.
+Use nuget package manager to install the pre-release version of Unirest.
+
+```C#
+Install-Package Unirest-API -pre
+```
 
 ## Creating Request
 So you're probably wondering how using Unirest makes creating requests in .NET easier, here is a basic POST request that will explain everything:
@@ -74,3 +78,27 @@ Upon recieving a response Unirest returns the result in the form of an Object, t
 - `.Headers` - HTTP Response Headers
 - `.Body` - Parsed response body where applicable, for example JSON responses are parsed to Objects / Associative Arrays.
 - `.Raw` - Un-parsed response body
+
+# Basic Authentication
+
+The .NET Unirest library has built-in support for basic authentication. You can append your credentials with your request as follows.
+
+```C#
+HttpResponse<MyClass> myClass = Unirest.post("http://httpbin.org/post")
+  .header("accept", "application/json")
+  .field("parameter", "value")
+  .basicAuth("username", "password")
+  .asJson<MyClass>();
+```
+
+# Advanced Authentication using Filter
+
+This library supports message filter for outgoing http messages. This functionality can be used for manipulating outgoing request. A usecase for this feature is to use external authentication handlers for advanced authentication process such as the various flows of oAuth. You can set an authentication filter that is invoked before making a request and thus any additional credentials or headers can be appended. See uniauth on github (https://github.com/zeeshanejaz/uniauth-net) for a compatible authentication filter.
+
+```C#
+HttpResponse<MyClass> myClass = Unirest.post("http://httpbin.org/post")
+  .header("accept", "application/json")
+  .field("parameter", "value")
+  .filter(Func<HttpRequestMessage, bool> filter)
+  .asJson<MyClass>();
+```
