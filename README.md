@@ -1,5 +1,7 @@
 # Unirest for .Net
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Mashape/unirest-net?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Unirest is a set of lightweight HTTP libraries available in multiple languages.
 
 This is a port of the Java library to .NET.
