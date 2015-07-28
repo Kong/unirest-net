@@ -1,6 +1,6 @@
 # Unirest for .Net
 
-Unirest is a set of lightweight HTTP libraries available in multiple languages.
+Unirest is a set of lightweight HTTP libraries available in multiple languages, built and maintained by the [Mashape team](https://github.com/Mashape).
 
 This is a port of the Java library to .NET.
 
