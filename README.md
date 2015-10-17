@@ -1,6 +1,8 @@
 # Unirest for .Net
 
-Unirest is a set of lightweight HTTP libraries available in multiple languages, built and maintained by the [Mashape team](https://github.com/Mashape).
+![][unirest-logo]
+
+[Unirest](http://unirest.io) is a set of lightweight HTTP libraries available in multiple languages, built and maintained by [Mashape](https://github.com/Mashape), who also maintain the open-source API Gateway [Kong](https://github.com/Mashape/kong). 
 
 This is a port of the Java library to .NET.
 
@@ -74,3 +76,9 @@ Upon recieving a response Unirest returns the result in the form of an Object, t
 - `.Headers` - HTTP Response Headers
 - `.Body` - Parsed response body where applicable, for example JSON responses are parsed to Objects / Associative Arrays.
 - `.Raw` - Un-parsed response body
+
+----
+
+Made with &#9829; from the [Mashape](https://www.mashape.com/) team
+
+[unirest-logo]: http://cl.ly/image/2P373Y090s2O/Image%202015-10-12%20at%209.48.06%20PM.png
