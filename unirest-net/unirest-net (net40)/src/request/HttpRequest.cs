@@ -89,7 +89,7 @@ namespace unirest_net.request
             return this;
         }
 
-        public HttpRequest field(string name, byte[] data)
+        public HttpRequest field(string name, byte[] data, string mimetype = "image/jpeg", string filename = "image.jpg")
         {
             if (HttpMethod == HttpMethod.Get)
             {
@@ -103,9 +103,9 @@ namespace unirest_net.request
             //    here you can specify boundary if you need---^
             var imageContent = new ByteArrayContent(data);
             imageContent.Headers.ContentType =
-                MediaTypeHeaderValue.Parse("image/jpeg");
+                MediaTypeHeaderValue.Parse(mimetype);
 
-            Body.Add(imageContent, name, "image.jpg");
+            Body.Add(imageContent, name, filename);
 
             hasFields = true;
             return this;
